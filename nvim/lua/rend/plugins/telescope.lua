@@ -28,8 +28,14 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-    keymap.set("n", "fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+    keymap.set(
+      "n",
+      "ff",
+      "<cmd>Telescope find_files theme=dropdown hidden=true<cr>",
+      { desc = "Fuzzy find files in cwd" }
+    )
+    keymap.set("n", "fr", "<cmd>Telescope oldfiles theme=dropdown<cr>", { desc = "Fuzzy find recent files" })
+    keymap.set("n", "fs", "<cmd>Telescope live_grep theme=dropdown<cr>", { desc = "Find string in cwd" })
+    keymap.set("n", "fb", "<cmd>Telescope buffers theme=dropdown<cr>", { desc = "Find string in cwd" })
   end,
 }

@@ -21,6 +21,12 @@ return {
       -- setup formatters & linters
       sources = {
         --  to disable file types use
+        formatting.gofumpt.with {
+          extra_args = { "--extra" },
+        }, -- go formatter
+        formatting.goimports_reviser,
+        formatting.golines,
+
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
         formatting.prettier.with {
           extra_filetypes = { "svelte" },

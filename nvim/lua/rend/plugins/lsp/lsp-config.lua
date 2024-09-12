@@ -53,7 +53,7 @@ return {
       keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
       opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+      keymap.set("n", "H", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -74,6 +74,25 @@ return {
     lspconfig["html"].setup {
       capabilities = capabilities,
       on_attach = on_attach,
+    }
+
+    -- configure gopls server
+    lspconfig["gopls"].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { "go", "gomod", "gowork" },
+      root_dir = util.root_pattern("go.mod", "go.work", ".git"),
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+            shadow = true,
+          },
+          staticcheck = true,
+        },
+      },
     }
 
     -- configure typescript server with plugin
@@ -109,6 +128,35 @@ return {
           end,
         })
       end,
+    }
+
+    lspconfig["biome"].setup {
+      capabilities = capabilities,
+      on_new_config = function(config)
+        if vim.fn.executable "node_modules/.bin/biome" == 1 then
+          config.cmd = { "node_modules/.bin/biome", "lsp-proxy" }
+        end
+      end,
+      root_dir = function(file)
+        local biome_root = vim.fs.root(file, { "biome.json", "biome.jsonc" })
+        if biome_root then
+          local node_root = vim.fs.root(file, { "package.json", "node_modules" })
+          return node_root or biome_root
+        else
+          return nil
+        end
+      end,
+      filetype = {
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "typescript",
+        "typescript.tsx",
+        "typescriptreact",
+        "svelte",
+        "vue",
+      },
     }
 
     -- configure prisma orm server

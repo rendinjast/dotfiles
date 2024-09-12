@@ -4,15 +4,17 @@ return {
   config = function()
     local lualine = require "lualine"
     local lazy_status = require "lazy.status" -- to configure lazy pending updates count
-    local material = require "material.lualine"
 
-    material.normal.c.bg = "#151515"
+    local custom_gruvbox = require "lualine.themes.gruvbox-baby"
+    local c = require("gruvbox-baby.colors").config()
+    custom_gruvbox.normal.a.bg = c.red
+    custom_gruvbox.inactive.c.bg = "transparent"
+
     -- configure lualine with modified theme
     lualine.setup {
       options = {
-        -- theme = lualine_nightfly,
         icons_enabled = true,
-        theme = material,
+        theme = custom_gruvbox,
         component_separators = { left = "|", right = "|" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
@@ -30,9 +32,22 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = { "filename" },
+        lualine_b = {
+          {
+            "buffers",
+            mode = 2,
+            use_mode_colors = false,
+            buffers_color = {
+              active = { bg = "transparent", fg = "#ff9e64", gui = "bold" },
+              inactive = { bg = "transparent", fg = "#4c566a", gui = "bold" },
+            },
+          },
+        },
+        lualine_c = {},
         lualine_x = {
+          "branch",
+          "diff",
+          "diagnostics",
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
@@ -47,8 +62,8 @@ return {
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
+        lualine_c = {},
+        lualine_x = {},
         lualine_y = {},
         lualine_z = {},
       },

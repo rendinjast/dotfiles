@@ -19,8 +19,8 @@ return {
     -- Set menu
     dashboard.section.buttons.val = {
       dashboard.button("n", "  > New File", "<cmd>ene<CR>"),
-      dashboard.button("ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
-      dashboard.button("fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
+      dashboard.button("ff", "󰱼 > Find File", "<cmd>Telescope find_files theme=dropdown<CR>"),
+      dashboard.button("fs", "  > Find Word", "<cmd>Telescope live_grep theme=dropdown<CR>"),
       dashboard.button("wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
       dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
     }

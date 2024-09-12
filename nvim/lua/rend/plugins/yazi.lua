@@ -7,7 +7,7 @@ return {
   keys = {
     -- 👇 in this section, choose your own keymappings!
     {
-      "e",
+      "-",
       function()
         require("yazi").yazi()
       end,
@@ -15,7 +15,7 @@ return {
     },
     {
       -- Open in the current working directory
-      "<leader>e",
+      "_",
       function()
         require("yazi").yazi(nil, vim.fn.getcwd())
       end,
@@ -25,5 +25,9 @@ return {
   opts = {
     open_for_directories = false,
     yazi_floating_window_border = "rounded",
+    keymaps = {
+      open_file_in_vertical_split = "<c-v>",
+      open_file_in_horizontal_split = "<c-h>",
+    },
   },
 }

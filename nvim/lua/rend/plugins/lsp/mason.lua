@@ -38,6 +38,7 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "gopls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -49,6 +50,9 @@ return {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
         "eslint_d", -- ts/js linter
+        "gofumpt",
+        "goimports-reviser",
+        "golines",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = false,
