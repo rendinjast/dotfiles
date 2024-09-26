@@ -30,8 +30,8 @@ keymap.set("n", "<leader>b2", ":LualineBuffersJump 2<CR>", { silent = true })
 keymap.set("n", "<leader>b3", ":LualineBuffersJump 3<CR>", { silent = true })
 keymap.set("n", "<leader>b4", ":LualineBuffersJump 4<CR>", { silent = true })
 keymap.set("n", "<leader>b5", ":LualineBuffersJump 5<CR>", { silent = true })
-keymap.set("n", "<S-j>", ":bnext<CR>", { silent = true, desc = "Next Buffer" })
-keymap.set("n", "<S-k>", ":bprevious<CR>", { silent = true, desc = "Prev Buffer" })
+keymap.set("n", "<S-k>", ":bnext<CR>", { silent = true, desc = "Next Buffer" })
+keymap.set("n", "<S-j>", ":bprevious<CR>", { silent = true, desc = "Prev Buffer" })
 keymap.set("n", "<S-x>", ":bdelete<CR>", { silent = true, desc = "Delete Buffer" })
 
 -- window navigation

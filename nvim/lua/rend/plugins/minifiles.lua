@@ -11,7 +11,7 @@ return {
       go_out_plus = "H",
       mark_goto = "'",
       mark_set = "m",
-      reset = "<BS>",
+      reset = "r",
       reveal_cwd = "@",
       show_help = "g?",
       synchronize = "s",
@@ -32,14 +32,14 @@ return {
   },
   keys = {
     {
-      "e",
+      "<leader>e",
       function()
         MiniFiles.open(vim.api.nvim_buf_get_name(0))
       end,
       desc = "Open Mini Files",
     },
     {
-      "<leader>e",
+      "<leader>E",
       function()
         MiniFiles.open()
       end,

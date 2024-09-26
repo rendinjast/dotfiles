@@ -5,16 +5,16 @@ return {
     local lualine = require "lualine"
     local lazy_status = require "lazy.status" -- to configure lazy pending updates count
 
-    local custom_gruvbox = require "lualine.themes.gruvbox-baby"
-    local c = require("gruvbox-baby.colors").config()
-    custom_gruvbox.normal.a.bg = c.red
-    custom_gruvbox.inactive.c.bg = "transparent"
+    local github = require "lualine.themes.auto"
+    github.normal.a.bg = "pink"
+    github.normal.c.bg = "transparent"
+    github.inactive.c.bg = "transparent"
 
     -- configure lualine with modified theme
     lualine.setup {
       options = {
         icons_enabled = true,
-        theme = custom_gruvbox,
+        theme = github,
         component_separators = { left = "|", right = "|" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {

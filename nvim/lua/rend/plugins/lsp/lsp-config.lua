@@ -130,6 +130,23 @@ return {
       end,
     }
 
+    -- configure Aptos move anaylzer server
+    lspconfig["move_analyzer"].setup {
+      capabilities = capabilities,
+      name = "Aptos Move Analyzer",
+      on_attach = on_attach,
+      cmd = { "aptos-move-analyzer" },
+      filetypes = { "move" },
+      root_dir = util.root_pattern(".aptos", "Move.toml"),
+      settings = {},
+      docs = {
+        description = [[ ]],
+        default_config = {
+          root_dir = [[root_pattern("Move.toml")]],
+        },
+      },
+    }
+
     lspconfig["biome"].setup {
       capabilities = capabilities,
       on_new_config = function(config)
