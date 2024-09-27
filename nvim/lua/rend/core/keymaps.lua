@@ -34,11 +34,6 @@ keymap.set("n", "<S-k>", ":bnext<CR>", { silent = true, desc = "Next Buffer" })
 keymap.set("n", "<S-j>", ":bprevious<CR>", { silent = true, desc = "Prev Buffer" })
 keymap.set("n", "<S-x>", ":bdelete<CR>", { silent = true, desc = "Delete Buffer" })
 
--- window navigation
-keymap.set("n", "<c-j>", "lua require('tmux').move_bottom()<cr>", { silent = true, desc = "Move down" })
-keymap.set("n", "<c-h>", "lua require('tmux').move_left()<cr>", { silent = true, desc = "Move left" })
-keymap.set("n", "<c-k>", "lua require('tmux').move_top()<cr>", { silent = true, desc = "Move up" })
-keymap.set("n", "<c-l>", "lua require('tmux').move_right()<cr>", { silent = true, desc = "Move right" })
 -- window splits
 keymap.set("n", "<leader>h", ":split<CR>", { desc = "split" })
 keymap.set("n", "<leader>v", ":vsplit<CR>", { desc = "vsplit" })

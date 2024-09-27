@@ -150,8 +150,9 @@ return {
     lspconfig["biome"].setup {
       capabilities = capabilities,
       on_new_config = function(config)
-        if vim.fn.executable "node_modules/.bin/biome" == 1 then
-          config.cmd = { "node_modules/.bin/biome", "lsp-proxy" }
+        local biome_cli = vim.fn.getcwd() .. "/node_modules/.bin/biome"
+        if vim.fn.executable(biome_cli) == 1 then
+          config.cmd = { biome_cli, "lsp-proxy" }
         end
       end,
       root_dir = function(file)
